@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<title>
+Countdown Timer
+</title>
+
+<head>
+
+<style type="text/css">
+
+body
+{
+background: rgb(200,190,255);
+}
+
+.sub
+{
+	width:1800px;
+	margin: 0px auto;
+}
+
+*
+{
+	box-sizing: border-box;
+}
+
+@media screen and (max-width: 640px)
+{
+	.sub
+	{
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 320px)
+{
+	.sub
+	{
+		width: 320px;
+	}
+}
+
+.tab
+{
+position: fixed;
+top: 50%;
+left: 50%;
+right: 50%;
+transform : translateX(-50%) translateY(-50%);
+text-align: center;
+background: rgb(225,225,225);
+padding: 50px;
+border: 10px outset rgb(153,0,204);
+}
+
+.row1 
+{
+font-size: 90px;
+}
+.row2
+{
+font-size: 80px;
+}
+
+.button
+{
+position: absolute;
+top: 15%;
+left: 1%;
+background-color: white;
+border: 5px inset rgb(153,0,204);
+color: black;
+padding: 5px;
+text-align: center;
+font-size: 15px;
+margin: 1px;
+cursor: pointer;
+transition-duration: 0.5sec;
+}
+
+.button:hover
+{
+
+background-color: rgb(225,225,225);
+color: black;
+border: 5px outset rgb(200,100,100);
+
+}
+
+.button1
+{
+position: absolute;
+top: 15%;
+left: 13%;
+background-color: white;
+border: 5px inset rgb(153,0,204);
+color: black;
+padding: 5px;
+text-align: center;
+font-size: 15px;
+margin: 1px;
+cursor: pointer;
+transition-duration: 0.5sec;
+}
+
+.button1:hover
+{
+
+background-color: rgb(225,225,225);
+color: black;
+border: 5px outset rgb(200,100,100);
+
+}
+</style>
+
+</head>
+
+
+<body>
+
+<table class="tab">
+<tr class="row1">
+<td colspan="4">Countdown Timer!!</td>
+</tr>
+<tr class="row2">
+<td id="days">0</td>
+<td id="hours">0</td>
+<td id="minutes">0</td>
+<td id="seconds">0</td>
+</tr>
+<tr>
+<td>Days</td>
+<td>Hours</td>
+<td>Minutes</td>
+<td>Seconds</td>
+</tr>
+</table>
+
+
+<p id="hi" style="font-size:200%"> Enter time in seconds </p>
+
+<input type="number"  id="time"> </input>
+
+<button class="button"  type="button"  onclick="init1()" > Enter </button>
+
+<button class="button1"  type="button"  onclick="init()" > Start </button>
+
+<script type="text/javascript">
+
+function init()
+{
+	var now = new Date();
+	var currentTime = now.getTime();
+	var eventTime = currentTime + (time.value*1000);
+	test(eventTime);
+}
+
+function init1()
+{
+	var now = new Date();
+	var currentTime = now.getTime();
+	var eventTime = currentTime + (time.value*1000);
+	test1(eventTime);
+}
+
+function test1(eventTime)
+{
+	var now = new Date();
+   	var rem = eventTime - now.getTime();
+	var s= Math.floor(rem/1000);
+	var m= Math.floor(s/60);
+	var h= Math.floor(m/60);
+	var d= Math.floor(h/24);
+
+	h%=24;
+	m%=60;
+	s%=60;
+
+	document.getElementById("days").innerHTML= d;
+	document.getElementById("hours").innerHTML = h;
+	document.getElementById("minutes").innerHTML = m;
+	document.getElementById("seconds").innerHTML = s;
+} 
+
+function test(eventTime)
+{
+	var now = new Date();
+   	var rem = eventTime - now.getTime();
+	var s= Math.floor(rem/1000);
+	var m= Math.floor(s/60);
+	var h= Math.floor(m/60);
+	var d= Math.floor(h/24);
+
+	h%=24;
+	m%=60;
+	s%=60;
+		
+	if( d==-1 && h==-1 && m==-1 && s==-1)
+	{
+		alert("Time up!!");
+		document.getElementById("days").innerHTML= 0;
+		document.getElementById("hours").innerHTML = 0;
+		document.getElementById("minutes").innerHTML = 0;
+		document.getElementById("seconds").innerHTML =0;
+	}
+
+	else
+	{
+		document.getElementById("days").innerHTML= d;
+		document.getElementById("hours").innerHTML = h;
+		document.getElementById("minutes").innerHTML = m;
+		document.getElementById("seconds").innerHTML = s;
+	
+		setTimeout(function(){test(eventTime)}, 100);
+	
+	}
+}
+</script>
+</body>
+</html>
+

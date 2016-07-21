@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<title>Suicide Squad</title>
+<head>
+
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
+<marquee direction =right  bgcolor=rgb(130,40,120)> 
+<h1 style="color: white"> Suicide Squad </h1>
+</marquee>
+
+<marquee bgcolor=rgb(140,100,180)>
+<h2 style="color: black"> Releases on 5th August, 2016, at IST 9:00   </h2>
+</marquee>
+
+<h3 align=center> Click the button to check the timer!! </h3>
+
+<style type="text/css">
+
+body
+{
+background: rgb(200,190,255);
+}
+
+.sub
+{
+	width:1800px;
+	margin: 0px auto;
+}
+
+*
+{
+	box-sizing: border-box;
+}
+
+@media screen and (max-width: 640px)
+{
+	.sub
+	{
+		width: 100%;
+	}
+
+	.button
+	{
+		width:50px;
+		height: 60px;
+		padding: 2px;
+	}
+}
+
+@media screen and (max-width: 320px)
+{
+	.sub
+	{
+		width: 320px;
+	}
+}
+
+.suicide
+{
+position: absolute;
+top: 50%;
+left: 50%;
+right: 50%;
+transform : translateX(-50%) translateY(-50%);
+text-align: center;
+background: rgb(225,225,225);
+padding: 50px;
+border: 10px outset rgb(153,0,204);
+}
+
+.button
+{
+position: absolute;
+top: 21%;
+left: 47%;
+right: 47%;
+background-color: white;
+border: 5px inset rgb(153,0,204);
+color: black;
+padding: 10px;
+text-align: center;
+font-size: 15px;
+margin: 3px;
+cursor: pointer;
+transition-duration: 0.5sec;
+}
+
+.button:hover
+{
+background-color: rgb(225,225,225);
+color: black;
+border: 5px outset rgb(200,100,100);
+}
+
+.squad1 
+{
+font-size: 90px;
+}
+
+.squad2
+{
+font-size: 80px;
+}
+
+</style>
+</head>
+
+<body>
+<div class="sub">
+<table class="suicide">
+<tr class="squad1">
+<td colspan="7">Suicide Countdown Starts!!</td>
+</tr>
+<tr class="squad2">
+<td id="days">365</td>
+<td id="hours">24</td>
+<td id="minutes">60</td>
+<td id="seconds">60</td>
+<td id="millisec">1000</td>
+</tr>
+<tr>
+<td>Days</td>
+<td>Hours</td>
+<td>Minutes</td>
+<td>Seconds</td>
+<td>Milliseconds</td>
+</tr>
+</table>
+</div>
+
+<button class="button"  type= "button"  onclick= "countdown()"  > Hit me!! </button>
+
+<script type="text/javascript">
+
+function countdown()
+{
+var alive = new Date();
+var dead = new Date(2016, 07, 05);
+var currentTime = alive.getTime();
+var eventTime = dead.getTime() + 9*60*60*1000;
+
+var rem = eventTime - currentTime;
+
+var sec= Math.floor(rem/1000);
+var min = Math.floor(sec/60);
+var hour = Math.floor(min/60);
+var day = Math.floor(hour/24);
+
+hour %= 24;
+min %= 60;
+sec %= 60;
+rem%=1000;
+
+
+day = (day < 100) ? "0" + day : day;
+hour = (hour < 10) ? "0" + hour : hour;
+min = (min < 10) ? "0" + min : min;
+sec = (sec < 10) ? "0" + sec : sec;
+rem = (rem< 100) ? "0" + rem : rem;
+
+
+document.getElementById("days").innerHTML= day;
+document.getElementById("hours").innerHTML = hour;
+document.getElementById("minutes").innerHTML = min;
+document.getElementById("seconds").innerHTML = sec;
+document.getElementById("millisec").innerHTML = rem;
+
+setTimeout(countdown, 100);
+}
+
+</script>
+</body>
+</html>
